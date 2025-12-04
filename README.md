@@ -8,39 +8,55 @@ This software helps you work with cosmic ray data from the Telescope Array exper
 
 This program takes a text file with cosmic ray data and converts it into a CSV file. CSV files are easier to open in programs like Excel or Google Sheets, and they're easier to work with in Python.
 
+## Installation
+
+The easiest way to install this software is using pip. This will automatically install everything you need, including pandas.
+
+1. Open a terminal (command prompt on Windows, Terminal on Mac/Linux)
+
+2. Navigate to the hotspot folder:
+   ```
+   cd hotspot
+   ```
+
+3. Install the package:
+   ```
+   pip install .
+   ```
+   
+   This will install the software and all its dependencies (including pandas).
+
 ## Requirements
 
-Before you can use this software, you need:
+If you prefer to install manually, you need:
 
 - **Python 3** - (you probably already have this!)
 - **pandas** - A Python library for working with data
 
-To install pandas, open a terminal and type:
+To install pandas manually, type:
 ```
 pip install pandas
 ```
 
 ## How to use it
 
-1. Open a terminal (command prompt on Windows, Terminal on Mac/Linux)
+### Option 1: Using the installed command (recommended)
 
-2. Navigate to the scripts folder:
-   ```
-   cd scripts
-   ```
+After installing with `pip install .`, you can run the program from anywhere:
 
-3. Run the program:
-   ```
-   python3 read_anicuts_data.py
-   ```
-   (On some computers, you might use `python` instead of `python3`)
+```
+read-anicuts
+```
 
-4. The program will:
-   - Read the data file
-   - Show you some information about the data
-   - Create a new CSV file
+### Option 2: Running as a Python module
 
-5. When it's done, you'll see a message saying "Conversion complete!"
+You can also run it as a Python module:
+
+```
+python3 -m hotspot_reader.read_anicuts_data
+```
+
+(On some computers, you might use `python` instead of `python3`)
 
 ## Working with the data interactively
 
@@ -48,8 +64,9 @@ If you want to explore the data directly in Python after the script runs, you ca
 
 1. Run the program with the `-i` option:
    ```
-   python3 -i read_anicuts_data.py
+   python3 -i -m hotspot_reader.read_anicuts_data
    ```
+   
 
 2. After the script finishes, Python will stay open and you'll see a `>>>` prompt. This means Python is waiting for you to type commands!
 
@@ -94,8 +111,8 @@ The CSV file contains information about cosmic ray events. Each row is one cosmi
 
 ## File locations
 
-- **Input file**: `data/hotspot.data.aniCuts.txt` - This is the original data file
-- **Output file**: `data/hotspot.data.aniCuts.csv` - This is the CSV file the program creates
+- **Input file**: `src/hotspot_reader/data/hotspot.data.aniCuts.txt` - This is the original data file (included in the package)
+- **Output file**: `src/hotspot_reader/data/hotspot.data.aniCuts.csv` - This is the CSV file the program creates
 
-You can open the CSV file in Excel, Google Sheets, or any program that reads CSV files!
+The data files are included in the package, so they're available after installation. You can open the CSV file in Excel, Google Sheets, or any program that reads CSV files!
 
