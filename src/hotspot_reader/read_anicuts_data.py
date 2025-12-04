@@ -8,6 +8,9 @@ and converts the data to a CSV file.
 
 import pandas as pd
 import os
+import sys
+import argparse
+import code
 from pathlib import Path
 
 
@@ -32,8 +35,12 @@ def get_data_dir():
     return str(Path.cwd() / 'data')
 
 
-def main():
-    """Main function to read and convert the data file."""
+def main(interactive=False):
+    """Main function to read and convert the data file.
+    
+    Args:
+        interactive: If True, drop into an interactive Python session after loading data.
+    """
     # Define column names based on the file format description
     column_names = [
         'Arrival_Year',
@@ -92,10 +99,33 @@ def main():
     print("Data loaded into DataFrame 'df'")
     print("="*80)
     
+    if interactive:
+        print("\n" + "="*80)
+        print("Entering interactive mode. The DataFrame is available as 'df'.")
+        print("Type 'exit()' or press Ctrl+D to exit.")
+        print("="*80 + "\n")
+        # Drop into interactive Python session with df in the namespace
+        code.interact(local={'df': df, 'pd': pd})
+    
+    return df
+
+
+def cli():
+    """Command-line interface entry point."""
+    parser = argparse.ArgumentParser(
+        description="Read and convert Telescope Array cosmic ray data files"
+    )
+    parser.add_argument(
+        '-i', '--interactive',
+        action='store_true',
+        help='Enter interactive Python session after loading data (DataFrame available as "df")'
+    )
+    args = parser.parse_args()
+    df = main(interactive=args.interactive)
     return df
 
 
 # Allow running as script with -i flag for interactive mode
 if __name__ == "__main__":
-    df = main()
+    cli()
 

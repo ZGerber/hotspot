@@ -45,7 +45,19 @@ pip install pandas
 After installing with `pip install .`, you can run the program from anywhere:
 
 ```
-read-anicuts
+read-hotspot-data
+```
+
+To enter an interactive Python session with the data loaded:
+
+```
+read-hotspot-data -i
+```
+
+or
+
+```
+read-hotspot-data --interactive
 ```
 
 ### Option 2: Running as a Python module
@@ -56,17 +68,27 @@ You can also run it as a Python module:
 python3 -m hotspot_reader.read_anicuts_data
 ```
 
+For interactive mode:
+
+```
+python3 -m hotspot_reader.read_anicuts_data -i
+```
+
 (On some computers, you might use `python` instead of `python3`)
 
 ## Working with the data interactively
 
 If you want to explore the data directly in Python after the script runs, you can use the `-i` option. This keeps Python running after the script finishes, so you can type commands and work with the data.
 
-1. Run the program with the `-i` option:
+1. Run the program with the `-i` flag:
    ```
-   python3 -i -m hotspot_reader.read_anicuts_data
+   read-hotspot-data -i
    ```
    
+   Or:
+   ```
+   python3 -m hotspot_reader.read_anicuts_data -i
+   ```
 
 2. After the script finishes, Python will stay open and you'll see a `>>>` prompt. This means Python is waiting for you to type commands!
 

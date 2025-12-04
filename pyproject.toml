@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-read-anicuts = "hotspot_reader.read_anicuts_data:main"
+read-hotspot-data = "hotspot_reader.read_anicuts_data:cli"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
